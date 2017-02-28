@@ -1,0 +1,169 @@
+<script src="jquery-3.1.1.min.js"></script>
+<html>
+<body>
+  <link rel="stylesheet" href="styles.css">
+  <title>Workout Tracker</title>
+  <form style="float:left; margin: 50px 0 0 0">
+        <table style="width:100%">
+      <tr>
+        <th>Weights</th>
+        <th> </th>
+      </tr>
+      <tr>
+        <td>45</td>
+        <td><img src="45t.png" id = "45" alt="45" onclick="add45()" style="width:30px;height:100px;"></td>
+      </tr>
+      <tr>
+        <td>25</td>
+        <td><img src="25t.png" id = "25" alt="25" style="width:30px;height:70px;"></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><img src="10t.png" id = "10" alt="10" style="width30px;height:50px;"></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><img src="5.png" id = "5" alt="5" style="width:50px;height:100px;"></td>
+      </tr>
+      <tr>
+        <td>2.5</td>
+        <td><img src="2.5.png" id = "2.5" alt="2.5" style="width:50px;height:100px;"></td>
+      </tr>
+    </table>
+    </form>
+
+      <center><h1><div id="title">Workout Tracker</div></h1></center>
+        <center><img src="barbell1.png" id = "barbell" alt="Barbell" style="width:500px;height:250px; margin: 50px 0 0 0"></center>
+        <center>
+          <button type = 'button' onclick="lift()">Lift it!</button>
+          <button type = 'button' onclick="set()">New Set</button>
+          <button type = 'button' onclick="clearit()">Clear Weights</button>
+          <button type = 'button' onclick="stop()">Stop Workout</button>
+
+          <table>
+        <tr>
+          <th>Reps</th>
+          <th>Sets</th>
+          <th>Weight</th>
+          <th>Total Reps</th>
+        </tr>
+        <tr>
+          <td><h1 id="p1"> 0</h1></td>
+          <td><h1 id="p2"> 0</h1></td>
+          <td><h1 id="p3"> 0</h1></td>
+          <td><h1 id="p4"> 0</h1></td>
+        </tr>
+      </table>
+
+          </center>
+        <script>
+        var reps = 0;
+        var sets = 0;
+        var weight = 0;
+        var totalReps = 0;
+        var weightCount = 0;
+        var repText = document.getElementById("p1")
+        var setText = document.getElementById("p2")
+        var weightText = document.getElementById("p3")
+        var totalText = document.getElementById("p4")
+
+
+          function add45()
+          {
+            if(reps == 0)
+            {
+              weight+=45;
+              weightText.innerHTML = weight;
+              weightCount++;
+              weightCheck();
+
+            }
+            else {
+              alert("You cannot add weights in the middle of a set!")
+            }
+          }
+          function weightCheck()
+          {
+            if (weightCount == 0)
+            {
+              document.getElementById("barbell").src = "barbell1.png";
+            }
+            if (weightCount == 1)
+            {
+              document.getElementById("barbell").src = "barbellLeft.png";
+            }
+            if (weightCount >= 2)
+            {
+              document.getElementById("barbell").src = "barbellboth.png";
+            }
+          }
+          function add25()
+          {
+            weight+=25;
+            weightText.innerHTML = weight;
+          }
+          function add10()
+          {
+            weight+=10;
+            weightText.innerHTML = weight;
+          }
+          function add5()
+          {
+            weight+=5;
+            weightText.innerHTML = weight;
+          }
+          function add2p5()
+          {
+            weight+=2.5;
+            weightText.innerHTML = weight;
+          }
+          function lift()
+          {
+            reps++;
+            totalReps++;
+            repText.innerHTML = reps + "";
+            totalText.innerHTML = totalReps + "";
+          }
+          function set()
+          {
+            if (reps == 0)
+            {
+              alert("That's not a set, you didn't do anything!");
+            }
+            else
+            {
+              sets++;
+              reps = 0;
+              repText.innerHTML = reps;
+              setText.innerHTML = sets;
+            }
+          }
+          function clearit()
+          {
+            if (reps == 0 || weight == 0)
+            {
+              weight = 0;
+              weightText.innerHTML = weight;
+              weightCount = 0;
+              weightCheck();
+            }
+              else {
+                alert("Cannot change weight in the middle of a set!")
+              }
+            }
+
+          function stop()
+          {
+            sets = 0;
+            reps = 0;
+            weight = 0;
+            totalReps = 0;
+            repText.innerHTML = reps;
+            weightText.innerHTML = weight;
+            setText.innerHTML = sets;
+            totalText.innerHTML = totalReps;
+          }
+        </script>
+
+</body>
+</html>
