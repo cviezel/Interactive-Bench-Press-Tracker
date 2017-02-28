@@ -3,10 +3,22 @@
 <body>
   <link rel="stylesheet" href="styles.css">
   <title>Workout Tracker</title>
-  <form style="float:left; margin: 50px 0 0 0">
-        <table style="width:100%">
+
+  <form style = "float:right; margin-right: 100px; height:100%">
+<h1>History</h1>
+<table cellspacing="5" id = "his">
+<tr>
+  <th>Set #</th>
+  <th>Reps</th>
+  <th>Weight</th>
+</tr>
+</table>
+</form>
+
+  <div style="float:left;">
+        <table>
       <tr>
-        <th>Weights</th>
+        <th><h1>Weights</h1></th>
         <th> </th>
       </tr>
       <tr>
@@ -30,42 +42,56 @@
         <td><img src="2.5.png" id = "2.5" alt="2.5" style="width:50px;height:100px;"></td>
       </tr>
     </table>
-    </form>
+  </div>
 
-      <center><h1><div id="title">Workout Tracker</div></h1></center>
-        <center><img src="barbell1.png" id = "barbell" alt="Barbell" style="width:500px;height:250px; margin: 50px 0 0 0"></center>
-        <center>
-          <button type = 'button' onclick="lift()">Lift it!</button>
-          <button type = 'button' onclick="set()">New Set</button>
-          <button type = 'button' onclick="clearit()">Clear Weights</button>
-          <button type = 'button' onclick="stop()">Stop Workout</button>
+  <div style = "margin: 50px 0 0 0" id="title">
 
-          <table>
-        <tr>
-          <th>Reps</th>
-          <th>Sets</th>
-          <th>Weight</th>
-          <th>Total Reps</th>
-        </tr>
-        <tr>
-          <td><h1 id="p1"> 0</h1></td>
-          <td><h1 id="p2"> 0</h1></td>
-          <td><h1 id="p3"> 0</h1></td>
-          <td><h1 id="p4"> 0</h1></td>
-        </tr>
-      </table>
+    <center><h1>Workout Tracker</h1></center>
+    <center><img src="barbell1.png" id = "barbell" alt="Barbell" style="width:500px;height:250px; margin: 50px 0 0 0"></center>
 
-          </center>
+    <center>
+      <button type = 'button' onclick="lift()">Lift it!</button>
+      <button type = 'button' onclick="set()">New Set</button>
+      <button type = 'button' onclick="clearit()">Clear Weights</button>
+      <button onClick="window.location.reload()">New Workout</button>
+    </center>
+<center>
+      <table cellspacing = "15">
+    <tr>
+      <th>Reps</th>
+      <th>Sets</th>
+      <th>Weight</th>
+      <th>Total Reps</th>
+    </tr>
+    <tr>
+      <td><h1 id="p1"> 0</h1></td>
+      <td><h1 id="p2"> 0</h1></td>
+      <td><h1 id="p3"> 45</h1></td>
+      <td><h1 id="p4"> 0</h1></td>
+    </tr>
+  </table>
+</center>
+
+
+  </div>
+
         <script>
+        var t1 = document.getElementById("his");
+
         var reps = 0;
         var sets = 0;
-        var weight = 0;
+        var weight = 45;
         var totalReps = 0;
         var weightCount = 0;
-        var repText = document.getElementById("p1")
-        var setText = document.getElementById("p2")
-        var weightText = document.getElementById("p3")
-        var totalText = document.getElementById("p4")
+        var repText = document.getElementById("p1");
+        var setText = document.getElementById("p2");
+        var weightText = document.getElementById("p3");
+        var totalText = document.getElementById("p4");
+
+        var weightArr = [];
+        var repArr = [];
+        var setArr = [];
+
 
 
           function add45()
@@ -132,6 +158,21 @@
             }
             else
             {
+
+              setArr.push(sets);
+              repArr.push(reps);
+              weightArr.push(weight);
+
+              var row = t1.insertRow();
+
+              var cell1 = row.insertCell(0);
+              var cell2 = row.insertCell(1);
+              var cell3 = row.insertCell(2);
+
+              cell1.innerHTML = (setArr.pop() +1);
+              cell2.innerHTML = repArr.pop();
+              cell3.innerHTML = weightArr.pop();
+
               sets++;
               reps = 0;
               repText.innerHTML = reps;
@@ -142,7 +183,7 @@
           {
             if (reps == 0 || weight == 0)
             {
-              weight = 0;
+              weight = 25;
               weightText.innerHTML = weight;
               weightCount = 0;
               weightCheck();
@@ -151,18 +192,6 @@
                 alert("Cannot change weight in the middle of a set!")
               }
             }
-
-          function stop()
-          {
-            sets = 0;
-            reps = 0;
-            weight = 0;
-            totalReps = 0;
-            repText.innerHTML = reps;
-            weightText.innerHTML = weight;
-            setText.innerHTML = sets;
-            totalText.innerHTML = totalReps;
-          }
         </script>
 
 </body>
