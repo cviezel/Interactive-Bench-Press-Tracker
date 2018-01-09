@@ -22,32 +22,37 @@
         <th> </th>
       </tr>
       <tr>
-        <td>45</td>
-        <td><img src="45t.png" id = "45" alt="45" onclick="add45()" style="width:30px;height:100px;"></td>
+        <td>
+          <button type = 'button' style="width: 100px height: 100px" onclick="add45()">45</button>
       </tr>
       <tr>
-        <td>25</td>
-        <td><img src="25t.png" id = "25" alt="25" style="width:30px;height:70px;"></td>
+        <td>
+          <button type = 'button' onclick="add35()">35</button>
       </tr>
       <tr>
-        <td>10</td>
-        <td><img src="10t.png" id = "10" alt="10" style="width30px;height:50px;"></td>
+        <td>
+          <button type = 'button' onclick="add25()">25</button>
       </tr>
       <tr>
-        <td>5</td>
-        <td><img src="5.png" id = "5" alt="5" style="width:50px;height:100px;"></td>
+        <td>
+          <button type = 'button' onclick="add10()">10</button>
       </tr>
       <tr>
-        <td>2.5</td>
-        <td><img src="2.5.png" id = "2.5" alt="2.5" style="width:50px;height:100px;"></td>
+        <td>
+          <button type = 'button' onclick="add5()">5</button>
+      </tr>
+      <tr>
+        <td>
+          <button type = 'button' onclick="add2p5()">2.5</button>
       </tr>
     </table>
   </div>
 
   <div style = "margin: 50px 0 0 0" id="title">
 
-    <center><h1>Workout Tracker</h1></center>
-    <center><img src="barbellBoth.png" id = "barbell" alt="Barbell" style="width:800px;height:300px; margin: 50px 0 0 0"></center>
+    <center><h1>Workout Tracker</h1>
+    <img src="barbellBoth.png" id = "barbell" alt="Barbell" style="width:800px;height:300px; margin: 50px 0 0 0">
+    </center>
 
     <center>
       <button type = 'button' onclick="lift()">Lift it!</button>
@@ -56,7 +61,7 @@
       <button onClick="window.location.reload()">New Workout</button>
     </center>
 <center>
-      <table cellspacing = "15">
+      <table cellspacing = "10">
     <tr>
       <th>Reps</th>
       <th>Sets</th>
@@ -101,51 +106,70 @@
               weight+=45;
               weightText.innerHTML = weight;
               weightCount++;
-              weightCheck();
-
             }
             else {
               alert("You cannot add weights in the middle of a set!")
             }
           }
-          /*
-          Supposed to change pictures to reflect weights being added, but pictures are not alligning properly
-
-          function weightCheck()
+          function add35()
           {
-            if (weightCount == 0)
+            if(reps == 0)
             {
-              document.getElementById("barbell").src = "barbell1.png";
+              weight+=35;
+              weightText.innerHTML = weight;
+              weightCount++;
             }
-            if (weightCount == 1)
-            {
-              document.getElementById("barbell").src = "barbellLeft.png";
-            }
-            if (weightCount >= 2)
-            {
-              document.getElementById("barbell").src = "barbellboth.png";
+            else {
+              alert("You cannot add weights in the middle of a set!")
             }
           }
-          */
           function add25()
           {
-            weight+=25;
-            weightText.innerHTML = weight;
+            if(reps == 0)
+            {
+              weight+=25;
+              weightText.innerHTML = weight;
+              weightCount++;
+            }
+            else {
+              alert("You cannot add weights in the middle of a set!")
+            }
           }
           function add10()
           {
-            weight+=10;
-            weightText.innerHTML = weight;
+            if(reps == 0)
+            {
+              weight+=10;
+              weightText.innerHTML = weight;
+              weightCount++;
+            }
+            else {
+              alert("You cannot add weights in the middle of a set!")
+            }
           }
           function add5()
           {
-            weight+=5;
-            weightText.innerHTML = weight;
+            if(reps == 0)
+            {
+              weight+=5;
+              weightText.innerHTML = weight;
+              weightCount++;
+            }
+            else {
+              alert("You cannot add weights in the middle of a set!")
+            }
           }
           function add2p5()
           {
-            weight+=2.5;
-            weightText.innerHTML = weight;
+            if(reps == 0)
+            {
+              weight+=2.5;
+              weightText.innerHTML = weight;
+              weightCount++;
+            }
+            else {
+              alert("You cannot add weights in the middle of a set!")
+            }
           }
           function lift()
           {
